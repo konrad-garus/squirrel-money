@@ -7,5 +7,5 @@
                  [ring/ring-core "0.3.11"]
                  [ring/ring-jetty-adapter "0.3.11"]
                  [clojure-csv/clojure-csv "1.3.2"]
-                 [yaclot "0.1.1-SNAPSHOT"]]
+                 [yaclot "0.1.3-SNAPSHOT"]]
   :main squirrel-money.core)

@@ -12,9 +12,4 @@
   (compojure/GET "/" [] (str "<h1>" (pff) "</h1>"))
   (route/not-found "<h1>Page not found</h1>"))
 
-
-;(defn -main [& args]
- ; (do
-    (prn "Hello, world")
-    (ring-jetty/run-jetty main-routes {:port 11080})
-;  ))
+(ring-jetty/run-jetty main-routes {:port 11080})

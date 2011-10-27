@@ -23,7 +23,7 @@
                  :subcategory (y/to-type String)
                  :detail (y/to-type String)
                  :value (y/to-type BigDecimal)
-                 :date (y/to-type java.util.Date)})
+                 :date (yaclot.core/using-format ["M/d/yyyy" "yyyy-M-d"] (y/to-type java.util.Date))})
 
 (defn add-expense [record]
   (do (prn record) (prn (y/map-convert record db-expense))
@@ -31,7 +31,8 @@
     *db*
     (sql/insert-records "expense" (y/map-convert record db-expense)))))
 
-(doall
-  (map 
-    #(add-expense (zipmap [:category :subcategory :detail :value :date] %))
-    (take 10 (rest (csv/parse-csv (slurp "oszczednosci.csv"))))))
+(defn import-csv []
+  (doall
+    (map 
+      #(add-expense (zipmap [:category :subcategory :detail :value :date] %))
+      (take 10 (rest (csv/parse-csv (slurp "oszczednosci.csv")))))))

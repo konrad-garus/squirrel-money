@@ -1,5 +1,5 @@
 create table expense (
-	expense_id int primary key not null,
+	expense_id identity primary key not null,
 	category varchar,
 	subcategory varchar,
 	detail varchar,
